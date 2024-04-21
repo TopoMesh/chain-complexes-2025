@@ -475,7 +475,7 @@ The condition that $\partial_k\cdot\partial_{k + 1} = 0$ gives us several identi
 \begin{align}
     [V_1, E_1][E_1, T] & = 0 \\
     [V_2, E_2][E_2, T] & = 0 \\
-    [V_3, E_1][E_1, T] + [V_3, E_2][E_2, T] & = 0
+    [V_3, E_1][E_1, T] + [V_3, E_2][E_2, T] & = 0 \label{eq:bisect-start}
 \end{align}
 Now we want to split the cell $T$ into two cells $T_1$ and $T_2$ such that $T = T_1 + T_2$.
 The new boundary matrices will have the form
@@ -483,6 +483,22 @@ The new boundary matrices will have the form
     & \partial_k' = \left[\begin{matrix}[V_1, E_1] & 0 & 0 \\ 0 & [V_2, E_2] & 0 \\ [V_3, E_1] & [V_3, E_2] & [V_3, E_3] \end{matrix}\right], \\
     & \quad \partial_{k + 1}' = \left[\begin{matrix}[E_1, T_1] & 0 \\ 0 & [E_2, T_2] \\ [E_3, T_1] & [E_3, T_2]\end{matrix}\right]
 \end{align}
+We can make a few simplifications right away by requiring that merging $T_1$ and $T_2$ back into a single cell will give back the original complex.
+Formally, this means that
+\begin{equation}
+    \partial_{k + 1}'\cdot\left[\begin{matrix} I & I\end{matrix}\right] = \partial_{k + 1}.
+\end{equation}
+The immediate consequence is that $[E_1, T_1] = [E_1, T]$, $[E_2, T_2] = [E_2, T]$ and
+\begin{equation}
+    [E_3, T_1] + [E_3, T_2] = 0.
+\end{equation}
+We will then introduce the unknown matrix $[E_3, T]$ and define $[E_3, T_1] = [E_3, T]$, $[E_3, T_2] = -[E_3, T]$.
+The remaining conditions to preserve the chain complex property are
+\begin{align}
+    [V_3, E_1][E_1, T] + [V_3, E_3][E_3, T] & = 0 \\
+    [V_3, E_2][E_2, T] - [V_3, E_3][E_3, T] & = 0
+\end{align}
+In principle, this system might appear to be over-determined, but adding up the two equations gives back equation \eqref{eq:bisect-start}.
 
 \textcolor{red}{Finish this.
 I haven't introduced what the $[\cdot,\cdot]$ notation means because in the short version this was the topological degree of the attaching map.
